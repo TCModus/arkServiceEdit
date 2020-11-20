@@ -51,8 +51,22 @@ while true; do
   fi
 
   if $MAP_YES || $SESSION_YES; then
-    echo "warning players about server restart"
-    yes broadcast warning! server is restarting now, please log off immediatly and wait for server to reload | ruby ~/srcon-rb/srcon.rb 127.0.0.1 32330 -p G0dM0de --
+    echo "warning players about server restart, this will take 2 minutes"
+    yes broadcast warning! server is restarting in 2 minutes, please log off immediatly and wait for server to reload | ruby ~/srcon-rb/srcon.rb 127.0.0.1 32330 -p G0dM0de --
+    sleep 30s
+    echo "1:30 left until restart"
+    yes broadcast server restart in: 1:30 | ruby ~/srcon-rb/srcon.rb 127.0.0.1 32330 -p G0dM0de --
+    sleep 30s
+    echo "1 minute left until restart"
+    yes broadcast server restart in: 1 minute | ruby ~/srcon-rb/srcon.rb 127.0.0.1 32330 -p G0dM0de --
+    sleep 30s
+    echo "30 seconds left until restart"
+    yes broadcast server restart in: 30 seconds | ruby ~/srcon-rb/srcon.rb 127.0.0.1 32330 -p G0dM0de --
+    for (( i = 30; i > 0; i-- )); do
+      yes broadcast server restart in: "$i" | ruby ~/srcon-rb/srcon.rb 127.0.0.1 32330 -p G0dM0de --
+      echo "$i seconds left until restart"
+      sleep 1s
+    done
 
     echo "Killing ark service for restart..."
     systemctl stop ark

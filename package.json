@@ -1,7 +1,7 @@
 {
   "name": "ark-service-edit",
   "description": "Quickly change map and/or ark server name, warn players in game, and restart after 2 minute timer with new settings.",
-  "private": true,
+  "private": false,
   "version": "0.0.0-development",
   "repository": {
     "type": "git",
